@@ -76,6 +76,15 @@ You will need to install these things
 ##Next steps
 There is a lot of places that could be made more efficient or better. Feel free to fix it up. 
 
+Here are my thoughts: 
+
+ * cronable script to post recent_location.json to s3
+ * facebook support
+ * instagram support
+ * site generator for something similar to [http://wheres.broox.com/](http://wheres.broox.com/)
+ 
+ Other ideas?
+
 ##Motivation
 
 My buddy Derek Brooks has an amazing geo setup on his site. I always follow his lead and have replicated it on my site. This works well, but is about 200 terrible scripts. We wanted to add location for a couple other people and so i whipped up a stand alone script. 
