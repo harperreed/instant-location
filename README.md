@@ -67,9 +67,9 @@ You will need to install these things
 		harper@ {~/instant-location}$ python locations.py
 		http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C41.91008943,-87.68528519&sensor=false
 
-	This drops a map url of your last known location. Whee. 
+	This outputs a map url of your last known location. Whee. 
 	
-	It also drops two json files: `recent_locations.json` and `recent_location.json`
+	It also drops `recent_location.json`
 	
 	The `recent_location.json` has your most recent location!
 	
