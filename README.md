@@ -56,7 +56,7 @@ You will need to install these things
 		flickr_nsid = ""
  
 ###Run the bad boy
- * You can run each of the scripts individually to make sure they work: `ython foursquare_location.py`
+ * You can run each of the scripts individually to make sure they work: `python foursquare_location.py`
 	
 		harper@ {~/instant-location}$ python foursquare_location.py
 		<__main__.foursquare_location object at 0x10828d710>
