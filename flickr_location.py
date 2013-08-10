@@ -2,6 +2,18 @@ from flickr import FlickrAPI
 import datetime
 from social_location import location
 
+"""
+___________.__  .__        __
+\_   _____/|  | |__| ____ |  | _________
+ |    __)  |  | |  |/ ___\|  |/ /\_  __ \
+ |     \   |  |_|  \  \___|    <  |  | \/
+ \___  /   |____/__|\___  >__|_ \ |__|
+     \/                 \/     \/
+
+Flickr last location grabber
+
+"""
+
 
 class flickr_location(location):
     def __init__(

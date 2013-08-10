@@ -1,5 +1,17 @@
 import json
 
+"""
+.____                         __  .__             ._.
+|    |    ____   ____ _____ _/  |_|__| ____   ____| |
+|    |   /  _ \_/ ___\\__  \\   __\  |/  _ \ /    \ |
+|    |__(  <_> )  \___ / __ \|  | |  (  <_> )   |  \|
+|_______ \____/ \___  >____  /__| |__|\____/|___|  /_
+        \/          \/     \/                    \/\/
+
+The basis for the locations. Attempted a simple API. Please fix if needed.
+
+"""
+
 
 class location(object):
 
@@ -36,8 +48,6 @@ class location(object):
             return self.location_obj
         else:
             return self.get_last_location()
-
-
 
     def get_location(self):
         return None

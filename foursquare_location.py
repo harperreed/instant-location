@@ -2,6 +2,18 @@ import foursquare
 import datetime
 from social_location import location
 
+"""
+___________
+\_   _____/___  __ _________  ______________ _______ _______   ____
+ |    __)/  _ \|  |  \_  __ \/  ___/ ____/  |  \__  \\_  __ \_/ __ \
+ |     \(  <_> )  |  /|  | \/\___ < <_|  |  |  // __ \|  | \/\  ___/
+ \___  / \____/|____/ |__|  /____  >__   |____/(____  /__|    \___  >
+     \/                          \/   |__|          \/            \/
+
+Foursquare last location grabber
+
+"""
+
 
 class foursquare_location(location):
     def __init__(
@@ -19,7 +31,7 @@ class foursquare_location(location):
         # Get the user's data
 
         since_id = self.get_last_id()  # "365956221922066432"
-        params={'limit': 1, "sort":"newestfirst"}
+        params = {'limit': 1, "sort": "newestfirst"}
 
         if since_id:
             params["afterTimestamp"] = since_id
@@ -46,4 +58,3 @@ if __name__ == "__main__":
     print location_obj
     print location_obj.location()
     print location_obj.get_last_id()
-

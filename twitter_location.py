@@ -3,6 +3,18 @@ import datetime
 import time
 from social_location import location
 
+"""
+___________       .__  __    __
+\__    ___/_  _  _|__|/  |__/  |_  ___________
+  |    |  \ \/ \/ /  \   __\   __\/ __ \_  __ \
+  |    |   \     /|  ||  |  |  | \  ___/|  | \/
+  |____|    \/\_/ |__||__|  |__|  \___  >__|
+                                      \/
+
+Twitter last location grabber
+"""
+
+
 class twitter_location(location):
     def __init__(
         self,
@@ -34,7 +46,7 @@ class twitter_location(location):
         last_twitter_status = None
 
         if twitter_status:
-            while (last_twitter_status == None):
+            while (last_twitter_status is None):
                 try:
                     twitter_status[place_holder].geo['coordinates'][0]
                     last_twitter_status = twitter_status[place_holder]
@@ -44,9 +56,9 @@ class twitter_location(location):
             twitter_location = {}
             twitter_location['source'] = 'twitter'
             twitter_location['id'] = last_twitter_status.id
-            twitter_location['date'] = str(datetime.datetime(*time.strptime(last_twitter_status.created_at,'%a %b %d %H:%M:%S +0000 %Y')[0:6]))
+            twitter_location['date'] = str(datetime.datetime(*time.strptime(last_twitter_status.created_at, '%a %b %d %H:%M:%S +0000 %Y')[0:6]))
             twitter_location['latitude'] = last_twitter_status.geo['coordinates'][0]
-            twitter_location['longitude'] =last_twitter_status.geo['coordinates'][1]
+            twitter_location['longitude'] = last_twitter_status.geo['coordinates'][1]
         else:
             twitter_location = None
 
