@@ -3,6 +3,8 @@ import datetime
 import time
 from social_location import location
 
+import sys
+
 """
 ___________       .__  __    __
 \__    ___/_  _  _|__|/  |__/  |_  ___________
@@ -36,29 +38,33 @@ class twitter_location(location):
 
         try:
             twitter_status = self.api.GetUserTimeline(
-                count=100,
+                count=10,
                 since_id=twitter_since_id
             )
         except:
             return None
 
+
         place_holder = 0
         last_twitter_status = None
 
         if twitter_status:
-            while (last_twitter_status is None):
+            while (last_twitter_status is None) and (place_holder <= len(twitter_status)):
                 try:
                     twitter_status[place_holder].geo['coordinates'][0]
                     last_twitter_status = twitter_status[place_holder]
                 except:
                     place_holder = place_holder + 1
 
-            twitter_location = {}
-            twitter_location['source'] = 'twitter'
-            twitter_location['id'] = last_twitter_status.id
-            twitter_location['date'] = str(datetime.datetime(*time.strptime(last_twitter_status.created_at, '%a %b %d %H:%M:%S +0000 %Y')[0:6]))
-            twitter_location['latitude'] = last_twitter_status.geo['coordinates'][0]
-            twitter_location['longitude'] = last_twitter_status.geo['coordinates'][1]
+            if last_twitter_status:
+                twitter_location = {}
+                twitter_location['source'] = 'twitter'
+                twitter_location['id'] = last_twitter_status.id
+                twitter_location['date'] = str(datetime.datetime(*time.strptime(last_twitter_status.created_at, '%a %b %d %H:%M:%S +0000 %Y')[0:6]))
+                twitter_location['latitude'] = last_twitter_status.geo['coordinates'][0]
+                twitter_location['longitude'] = last_twitter_status.geo['coordinates'][1]
+            else:
+                twitter_location = None
         else:
             twitter_location = None
 
