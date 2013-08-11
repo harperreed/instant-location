@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Instant-location by harperreed</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Instant-location</h1>
+        <p>A terrible and slow replacement for the sadly departed latitude API</p>
+
+        <p class="view"><a href="https://github.com/harperreed/instant-location">View the Project on GitHub <small>harperreed/instant-location</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/harperreed/instant-location/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/harperreed/instant-location/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/harperreed/instant-location">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="instant-location" class="anchor" href="#instant-location"><span class="octicon octicon-link"></span></a>instant location</h1>
+
+<h2>
+<a name="a-terrible-and-slow-replacement-for-the-sadly-departed-latitude-api" class="anchor" href="#a-terrible-and-slow-replacement-for-the-sadly-departed-latitude-api"><span class="octicon octicon-link"></span></a>A terrible and slow replacement for the sadly departed latitude API</h2>
+
+<p>Grab your social checkins, tweets, photos and store the last known location.</p>
+
+<p>Ever since latitude was pulled and the API stopped working I decided to grab
+my location from the social interactions instead of the no longer working
+latitude api.</p>
+
+<p>I have code similar to this running to store my current location and
+power <a href="http://harperreed.com/location">http://harperreed.com/location</a>.</p>
+
+<p>I tried to make it as simple as possible to support new apps that store
+location. Feel free to add a facebook class.</p>
+
+<p>Use it and hit me up: <a href="http://twitter.com/harper">@harper</a> (<a href="mailto:harper@nata2.org">harper@nata2.org</a>)</p>
+
+<h2>
+<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to use it</h2>
+
+<h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<p>You will need to install these things</p>
+
+<ul>
+<li><code>easy_install python-twitter</code></li>
+<li><code>easy_install foursquare</code></li>
+<li><code>easy_install python-flickr</code></li>
+</ul><h3>
+<a name="configure-the-app" class="anchor" href="#configure-the-app"><span class="octicon octicon-link"></span></a>Configure the app</h3>
+
+<ul>
+<li>rename the <code>config.py.example</code> to <code>config.py</code>
+</li>
+<li>
+<p>fill out all the goodies in <code>config.py</code></p>
+
+<pre><code> #Twitter API Tokens
+#Get creds
+#https://dev.twitter.com/apps/new
+twitter_consumer_key = ""
+twitter_consumer_secret = ""
+twitter_access_token_key = ""
+twitter_access_token_secret = ""
+
+#Foursquare API Tokens
+#Get creds here:
+#https://foursquare.com/developers/register
+foursquare_client_id = ""
+foursquare_client_secret = ""
+foursquare_redirect_uri = ""
+foursquare_access_token = ""
+
+#Flickr API Tokens
+#Get creds here:
+#http://www.flickr.com/services/apps/create/noncommercial/?
+flickr_key = ""
+flickr_secret = ""
+flickr_oauth_token=""
+flickr_oauth_token_secret=""
+flickr_nsid = ""
+</code></pre>
+</li>
+</ul><h3>
+<a name="run-the-bad-boy" class="anchor" href="#run-the-bad-boy"><span class="octicon octicon-link"></span></a>Run the bad boy</h3>
+
+<ul>
+<li>
+<p>You can run each of the scripts individually to make sure they work: <code>python foursquare_location.py</code></p>
+
+<pre><code>harper@ {~/instant-location}$ python foursquare_location.py
+&lt;__main__.foursquare_location object at 0x10828d710&gt;
+{'date': '2013-08-09 19:38:24', 'source': 'foursquare', 'id': 1376095104, 'longitude': -87.68533102506872, 'latitude': 41.91035473476432}
+1376095104
+</code></pre>
+</li>
+<li>
+<p>Once you are confident it works correctly go ahead and run the main <code>locations.py</code> script</p>
+
+<pre><code>harper@ {~/instant-location}$ python locations.py
+http://maps.googleapis.com/maps/api/staticmap?zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C41.91008943,-87.68528519&amp;sensor=false
+</code></pre>
+
+<p>This outputs a map url of your last known location. Whee. </p>
+
+<p>It also drops <code>recent_location.json</code></p>
+
+<p>The <code>recent_location.json</code> has your most recent location!</p>
+</li>
+</ul><h2>
+<a name="next-steps" class="anchor" href="#next-steps"><span class="octicon octicon-link"></span></a>Next steps</h2>
+
+<p>There is a lot of places that could be made more efficient or better. Feel free to fix it up. </p>
+
+<p>Here are my thoughts: </p>
+
+<ul>
+<li>cronable script to post recent_location.json to s3</li>
+<li>facebook support</li>
+<li>instagram support</li>
+<li>
+<p>site generator for something similar to <a href="http://wheres.broox.com/">http://wheres.broox.com/</a></p>
+
+<p>Other ideas?</p>
+</li>
+</ul><h2>
+<a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h2>
+
+<p>My buddy Derek Brooks has an amazing geo setup on his site. I always follow his lead and have replicated it on my site. This works well, but is about 200 terrible scripts. We wanted to add location for a couple other people and so i whipped up a stand alone script. </p>
+
+<p>This is going ot be used to power a map of <a href="http://ltc.io">my awesome coworkers</a>.</p>
+
+<h2>
+<a name="harper-is-awesome" class="anchor" href="#harper-is-awesome"><span class="octicon octicon-link"></span></a>Harper is awesome.</h2>
+
+<p>hit me up: <a href="http://twitter.com/harper">@harper</a> (<a href="mailto:harper@nata2.org">harper@nata2.org</a>)</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/harperreed">harperreed</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
