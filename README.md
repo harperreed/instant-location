@@ -30,51 +30,51 @@ You will need to install these things
  * rename the `config.py.example` to `config.py`
  * fill out all the goodies in `config.py`
  
-"""
-_________                _____.__
-\_   ___ \  ____   _____/ ____\__| ____
-/    \  \/ /  _ \ /    \   __\|  |/ ___\
-\     \___(  <_> )   |  \  |  |  / /_/  >
- \______  /\____/|___|  /__|  |__\___  /
-        \/            \/        /_____/
-
-You will need to grab the various tokens to go forward. I tried to make it
-as easy as possible.
-
-"""
-
-	#Twitter API Tokens
-	#Get creds
-	#https://dev.twitter.com/apps/new
-	twitter_consumer_key = ""
-	twitter_consumer_secret = ""
-	twitter_access_token_key = ""
-	twitter_access_token_secret = ""
-	
-	#Foursquare API Tokens
-	#Get creds here:
-	#https://foursquare.com/developers/register
-	foursquare_client_id = ""
-	foursquare_client_secret = ""
-	foursquare_redirect_uri = ""
-	foursquare_access_token = ""
-	
-	#Flickr API Tokens
-	#Get creds here:
-	#http://www.flickr.com/services/apps/create/noncommercial/?
-	flickr_key = ""
-	flickr_secret = ""
-	flickr_oauth_token=""
-	flickr_oauth_token_secret=""
-	flickr_nsid = ""
-	
-	#amazon aws
-	amazon_s3_bucket_name = 'my_location_bucket'
-	amazon_access_key = ""
-	amazon_secret_access_key = ""
-	
-	#filename
-	recent_location_filename = "recent_location.json"
+		"""
+		_________                _____.__
+		\_   ___ \  ____   _____/ ____\__| ____
+		/    \  \/ /  _ \ /    \   __\|  |/ ___\
+		\     \___(  <_> )   |  \  |  |  / /_/  >
+		 \______  /\____/|___|  /__|  |__\___  /
+		        \/            \/        /_____/
+		
+		You will need to grab the various tokens to go forward. I tried to make it
+		as easy as possible.
+		
+		"""
+		
+		#Twitter API Tokens
+		#Get creds
+		#https://dev.twitter.com/apps/new
+		twitter_consumer_key = ""
+		twitter_consumer_secret = ""
+		twitter_access_token_key = ""
+		twitter_access_token_secret = ""
+		
+		#Foursquare API Tokens
+		#Get creds here:
+		#https://foursquare.com/developers/register
+		foursquare_client_id = ""
+		foursquare_client_secret = ""
+		foursquare_redirect_uri = ""
+		foursquare_access_token = ""
+		
+		#Flickr API Tokens
+		#Get creds here:
+		#http://www.flickr.com/services/apps/create/noncommercial/?
+		flickr_key = ""
+		flickr_secret = ""
+		flickr_oauth_token=""
+		flickr_oauth_token_secret=""
+		flickr_nsid = ""
+		
+		#amazon aws
+		amazon_s3_bucket_name = 'my_location_bucket'
+		amazon_access_key = ""
+		amazon_secret_access_key = ""
+		
+		#filename
+		recent_location_filename = "recent_location.json"
  
 ###Run the bad boy
 
