@@ -30,7 +30,6 @@ foursquare_access_token = ""
 #Flickr API Tokens
 #Get creds here:
 #http://www.flickr.com/services/apps/create/noncommercial/?
-
 flickr_key = ""
 flickr_secret = ""
 flickr_oauth_token=""
@@ -38,7 +37,7 @@ flickr_oauth_token_secret=""
 flickr_nsid = ""
 
 #amazon aws
-amazon_s3_bucket_name = 'instant_locations'
+amazon_s3_bucket_name = 'my_location_bucket'
 amazon_access_key = ""
 amazon_secret_access_key = ""
 
