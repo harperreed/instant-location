@@ -60,6 +60,8 @@ location. Feel free to add a facebook class.</p>
 <li><code>easy_install python-twitter</code></li>
 <li><code>easy_install foursquare</code></li>
 <li><code>easy_install python-flickr</code></li>
+<li>
+<code>easy_install boto</code> (if you want to upload to s3)</li>
 </ul><h3>
 <a name="configure-the-app" class="anchor" href="#configure-the-app"><span class="octicon octicon-link"></span></a>Configure the app</h3>
 
@@ -69,7 +71,20 @@ location. Feel free to add a facebook class.</p>
 <li>
 <p>fill out all the goodies in <code>config.py</code></p>
 
-<pre><code> #Twitter API Tokens
+<pre><code>"""
+_________                _____.__
+\_   ___ \  ____   _____/ ____\__| ____
+/    \  \/ /  _ \ /    \   __\|  |/ ___\
+\     \___(  &lt;_&gt; )   |  \  |  |  / /_/  &gt;
+ \______  /\____/|___|  /__|  |__\___  /
+        \/            \/        /_____/
+
+You will need to grab the various tokens to go forward. I tried to make it
+as easy as possible.
+
+"""
+
+#Twitter API Tokens
 #Get creds
 #https://dev.twitter.com/apps/new
 twitter_consumer_key = ""
@@ -93,10 +108,21 @@ flickr_secret = ""
 flickr_oauth_token=""
 flickr_oauth_token_secret=""
 flickr_nsid = ""
+
+#amazon aws
+amazon_s3_bucket_name = 'my_location_bucket'
+amazon_access_key = ""
+amazon_secret_access_key = ""
+
+#filename
+recent_location_filename = "recent_location.json"
 </code></pre>
 </li>
 </ul><h3>
 <a name="run-the-bad-boy" class="anchor" href="#run-the-bad-boy"><span class="octicon octicon-link"></span></a>Run the bad boy</h3>
+
+<h4>
+<a name="drop-a-local-file-with-location" class="anchor" href="#drop-a-local-file-with-location"><span class="octicon octicon-link"></span></a>Drop a local file with location</h4>
 
 <ul>
 <li>
@@ -111,7 +137,7 @@ flickr_nsid = ""
 <li>
 <p>Once you are confident it works correctly go ahead and run the main <code>locations.py</code> script</p>
 
-<pre><code>harper@ {~/instant-location}$ python locations.py
+<pre><code>harper@ {~/instant-location}$ ./location_to_file.py
 http://maps.googleapis.com/maps/api/staticmap?zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C41.91008943,-87.68528519&amp;sensor=false
 </code></pre>
 
@@ -121,7 +147,28 @@ http://maps.googleapis.com/maps/api/staticmap?zoom=13&amp;size=600x300&amp;mapty
 
 <p>The <code>recent_location.json</code> has your most recent location!</p>
 </li>
-</ul><h2>
+</ul><h4>
+<a name="upload-file-to-an-s3-bucket" class="anchor" href="#upload-file-to-an-s3-bucket"><span class="octicon octicon-link"></span></a>Upload file to an s3 bucket</h4>
+
+<p>You can do the same thing as dropping a local file, but you push the file to an s3 bucket. </p>
+
+<p>The first step is to make sure your config file has your AWS keys, and bucket name. The bucket can exist, but it will set the generated file as public. </p>
+
+<p>Once you run the script <code>location_to_s3.py</code>, the file will be uploaded to the bucket and BAM - you have a publicly accessible JSON file with your location. </p>
+
+<pre><code>    harper@ {~/instant-location}$ ./location_to_s3.py
+    S3 URL: https://my_location_bucket.s3.amazonaws.com/recent_location.json
+</code></pre>
+
+<p>Publicly Accessible:</p>
+
+<pre><code>    harper@ {~/instant-location}$ curl https://my_location_bucket.s3.amazonaws.com/recent_location.json
+    {"date": "2013-08-12 03:10:38", "source": "twitter", "id": 366758599919284224, "longitude": -87.6755019, "latitude": 41.90907876}%
+</code></pre>
+
+<p>This is how we will be using this to upload location data for inclusion in a map of our friends. </p>
+
+<h2>
 <a name="next-steps" class="anchor" href="#next-steps"><span class="octicon octicon-link"></span></a>Next steps</h2>
 
 <p>There is a lot of places that could be made more efficient or better. Feel free to fix it up. </p>
@@ -129,7 +176,7 @@ http://maps.googleapis.com/maps/api/staticmap?zoom=13&amp;size=600x300&amp;mapty
 <p>Here are my thoughts: </p>
 
 <ul>
-<li>cronable script to post recent_location.json to s3</li>
+<li><del>cronable script to post recent_location.json to s3</del></li>
 <li>facebook support</li>
 <li>instagram support</li>
 <li>
