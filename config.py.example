@@ -36,3 +36,11 @@ flickr_secret = ""
 flickr_oauth_token=""
 flickr_oauth_token_secret=""
 flickr_nsid = ""
+
+#amazon aws
+amazon_s3_bucket_name = 'instant_locations'
+amazon_access_key = ""
+amazon_secret_access_key = ""
+
+#filename
+recent_location_filename = "recent_location.json"
