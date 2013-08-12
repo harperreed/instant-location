@@ -24,6 +24,7 @@ You will need to install these things
  * `easy_install python-twitter`
  * `easy_install foursquare`
  * `easy_install python-flickr`
+ * `easy_install boto` (if you want to upload to s3)
  
 ###Configure the app
 
