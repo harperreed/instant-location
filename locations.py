@@ -58,7 +58,7 @@ locations.append(flickr_location_obj.location())
 
 location = sorted(locations, key=operator.itemgetter('date'), reverse=True)[0]
 
-f = open('recent_location.json', 'w')
+f = open(config.recent_location_filename, 'w')
 f.write(json.dumps(location))
 
 print "Go here: http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + str(location["latitude"]) + "," + str(location["longitude"]) + "&sensor=false"
